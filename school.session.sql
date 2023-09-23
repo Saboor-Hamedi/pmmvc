@@ -1,0 +1,1 @@
+"SELECT * FROM users WHERE id = :id AND username = :username AND id != :id AND username != :username LIMIT 10 OFFSET 0 "
