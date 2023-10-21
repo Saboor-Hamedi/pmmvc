@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && docker-php-ext-install pdo pdo_mysql
 
-
+# RUN apt-get update && apt-get install -y php-bcmath php-gmp
+RUN apt update && apt install libgmp-dev -y && docker-php-ext-install gmp
 # Copy custom Apache virtual host configuration
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 # Enable Apache rewrite module

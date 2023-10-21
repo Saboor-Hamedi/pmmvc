@@ -12,12 +12,18 @@ class Controller
             $data = get_object_vars($data);
             extract($data);
         }
-
-        $filename = '../app/views/' . $name . '.view.php';
+    
+        $filename = __DIR__ . '/../views/' . $name . '.view.php';
+    
+        if (!file_exists($filename)) {
+            $filename = $name . '.view.php';
+        }
+    
         if (file_exists($filename)) {
-            require  $filename;
+            require $filename;
         } else {
-            require  '../views/error.view.php';
+            require_once __DIR__ . '/../views/error.view.php';
         }
     }
+    
 }

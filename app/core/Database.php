@@ -6,9 +6,10 @@ namespace App\core;
 use PDO;
 use App\core\FlashMessage;
 use PDOException;
+
 require_once 'Config.php';
 
-Trait Database
+trait Database
 {
     public static $instance;
     public $connection; // Declare the $connection property
@@ -23,39 +24,43 @@ Trait Database
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->GetConnection();
         } catch (PDOException $e) {
-            error_log('Database connection error: ' . $e->getMessage());
-            $this->flash->setMessage('Database connection error: ', $e->getMessage(). 'danger');            
+            error_log('Database connection error:  ' . $e->getMessage());
+            $this->flash->setMessage('Database connection error: ', $e->getMessage() . 'danger');
         }
-        
     }
 
     public function GetConnection()
     {
-        if($this->connection){
+        if ($this->connection) {
             return $this->connection;
-        }else{
+        } else {
             return false;
         }
     }
 
+    public function prepare($sql)
+    {
+        return $this->connection->prepare($sql);
+    }
     public function query($sql, array $params = [])
     {
         try {
             $statement = $this->connection->prepare($sql);
-            $check = $statement->execute($params);
-            if ($check) {
-                $result = $statement->fetchAll(PDO::FETCH_OBJ);
-                if (is_array($result) && count($result)) {
-                    return $result;
-                }
-                
+
+            foreach ($params as $key => $value) {
+                $statement->bindValue(":$key", is_scalar($value) ? $value : serialize($value));
+            }
+
+            if ($statement->execute()) {
+                return $statement->fetchAll(PDO::FETCH_OBJ) ?: null;
             }
         } catch (PDOException $e) {
             // Log or handle the exception
-            $this->flash->setMessage('Database connection error: ', $e->getMessage(). 'danger');            
-            return [];
         }
+
+        return [];
     }
+
 
     public function get_row($sql, array $params = [])
     {
@@ -71,7 +76,8 @@ Trait Database
             return false;
         } catch (PDOException $e) {
             // Log or handle the exception
-            $this->flash->setMessage('Database connection error: ', $e->getMessage(). 'danger');            return [];
+            $this->flash->setMessage('Database connection error: ', $e->getMessage() . 'danger');
+            return [];
         }
     }
 

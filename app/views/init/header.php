@@ -2,19 +2,16 @@
 
 use App\core\Assets;
 use App\services\Auth;
-// Get the authenticated user
-// Get the authenticated user
+
 $auth = new Auth();
-$user = $auth->getUser();
-
-// Check if the user is logged in
-if (isset($user)) {
-    // Store the user ID and roles in variables
-    $username = $user['username'];
-    $user_id = $user['user_id'];
-    $roles = $user['roles'];
+// check if user is authenticated 
+if ($auth->isAuthenticated()) {
+    $user = $auth->user();
+    // access to the data 
+    $user_id = $user->id;
+    $username = $user->username;
+    $roles = $user->roles;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +23,7 @@ if (isset($user)) {
     <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/login.css'); ?>">
     <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/cover.css'); ?>">
     <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/blog.css'); ?>">
     <link rel="stylesheet" href="<?php Assets::assets('assets/css/style.css'); ?>">
 </head>
 

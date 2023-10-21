@@ -14,7 +14,7 @@ services:
   db:
     image: mariadb:latest
     environment:
-      MYSQL_USER: admin`
+      MYSQL_USER: admin
       MYSQL_DATABASE: school
       MYSQL_PASSWORD: saboor123
       MYSQL_ROOT_PASSWORD: saboor123

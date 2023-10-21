@@ -11,8 +11,12 @@ class HtmlUtils
      */
     public static function escape($input)
     {
-        return htmlspecialchars($input, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        if ($input !== null) {
+            return htmlspecialchars($input, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        }
+        return $input; // Return null or empty string as is
     }
+    
 
     /**
      * Escape an array of strings using htmlspecialchars.

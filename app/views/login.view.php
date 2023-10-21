@@ -6,10 +6,10 @@ use App\core\HtmlUtils;
 $flash = new FlashMessage;
 require APPROOT . '/views/init/header.php';
 require APPROOT . '/views/init/navbar.php';
-$auth->check_loggedout();
+$auth->loggedOut();
 ?>
 
-<div class=" custom-container">
+<main class="login-container">
   <div class="center-container">
     <?php
     $flash->displayMessages();
@@ -40,8 +40,10 @@ $auth->check_loggedout();
 
       <div class="form-floating">
         <button type="submit" name="login-btn" class="btn btn-primary w-100 py-2" id="login-btn">
-          Login</button>
+          Login
+        </button>
       </div>
     </form>
   </div>
-  <?php require APPROOT . '/views/init/footer.php'; ?>
+</main>
+<?php require APPROOT . '/views/init/footer.php'; ?>

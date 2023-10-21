@@ -11,9 +11,12 @@ class LoginModel
   protected $table = 'users';
   protected $email;
   protected $password;
-  protected $allowColumns = [
+  protected $fillable = [
+    'id',
     'email',
-    'password'
+    'username', 
+    'roles',
+    'created_at'
   ];
   public function validate($data)
   {
@@ -39,4 +42,20 @@ class LoginModel
 
     return $errors;
   }
+
+	/**
+	 * @return mixed
+	 */
+	public function getFillable() {
+		return $this->fillable;
+	}
+	
+	/**
+	 * @param mixed $fillable 
+	 * @return self
+	 */
+	public function setFillable($fillable): self {
+		$this->fillable = $fillable;
+		return $this;
+	}
 }

@@ -6,10 +6,10 @@ use App\core\HtmlUtils;
 $flash = new FlashMessage;
 require APPROOT . '/views/init/header.php';
 require APPROOT . '/views/init/navbar.php';
-$auth->check_loggedin([0, 1, 2]);
+$auth->loggedIn([0,1,2]);
 ?>
 
-<div class="custom-container">
+<main class="login-container">
     <div class="center-container">
 
         <form action="" method="POST">
@@ -58,15 +58,15 @@ $auth->check_loggedin([0, 1, 2]);
                     if (!empty($errors['roles'])) {
                         echo $errors['roles'];
                     }
-
                     ?>
                 </span>
             </div>
-
             <div class="form-floating">
                 <button type="submit" name="sign-up-btn" class="btn btn-primary w-100 py-2" id="sign-up-btn">
-                    Sign in</button>
+                    Sign in
+                </button>
             </div>
         </form>
     </div>
-    <?php require APPROOT . '/views/init/footer.php';    ?>
+</main>
+<?php require APPROOT . '/views/init/footer.php';    ?>

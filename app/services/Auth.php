@@ -7,52 +7,66 @@ use App\core\Direction;
 class Auth
 {
   use Direction;
-  public function auth($user)
+
+  public function __construct()
   {
-    $_SESSION['user_id'] = $user->id;
-    $_SESSION['username'] = $user->username;
-    $_SESSION['roles'] = $user->roles;
+    // session_start(); // Always start the session in the constructor
+  }
+
+  public function login($user_id)
+  {
+    $_SESSION['user_id'] = $user_id; // Store the entire user object
   }
 
   public function isAuthenticated()
   {
     return isset($_SESSION['user_id']);
   }
-  public function getUser()
-  {
-    if ($this->isAuthenticated()) {
-      return [
-        'user_id' => $_SESSION['user_id'],
-        'username' => $_SESSION['username'],
-        'roles' => $_SESSION['roles'],
-      ];
-    } else {
-      return null;
-    }
-  }
-  public function check_loggedin($allowedRoles = [])
-  {
-    if (isset($_SESSION['user_id'])) {
-      // User is logged in, retrieve the user's role from the session
-      $roles = $_SESSION['roles'];
 
-      // Check if the user's role is allowed to access the page
-      if (in_array($roles, $allowedRoles)) {
-        return; // Allow execution to continue
-      } else {
-        $this->redirect('/Home');
-        exit;
+  public function user()
+  {
+    return $this->isAuthenticated() ? $_SESSION['user_id'] : null;
+  }
+
+  public function hasRole($allowedRoles)
+  {
+    $user = $this->user();
+
+    // Ensure $allowedRoles is an array
+    if (!is_array($allowedRoles)) {
+      $allowedRoles = [$allowedRoles];
+    }
+
+    if ($user) {
+      $userRoles = (array)$user->roles; // Convert user roles to an array if it's not already
+
+      // Check if there is an intersection between user roles and allowed roles
+      if (count(array_intersect($userRoles, $allowedRoles)) > 0) {
+        return true; // The user has at least one of the allowed roles
       }
-    } else {
-      $this->redirect('/LoginController');
+    }
+
+    return false; // User does not have any of the allowed roles or is not authenticated
+  }
+
+
+  public function loggedIn($allowedRoles = [], $redirectUrl = '/Home')
+  {
+    if (!$this->isAuthenticated()) {
+      $this->redirect('/Login'); // Redirect to the login page if not authenticated
+      exit;
+    }
+
+    if (!empty($allowedRoles) && !$this->hasRole($allowedRoles)) {
+      $this->redirect($redirectUrl); // Redirect to the specified page if roles don't match
       exit;
     }
   }
 
-  public  function check_loggedout()
+  public function loggedOut($redirectUrl = '/Home')
   {
-    if (isset($_SESSION['user_id'])) {
-      $this->redirect('/Home');
+    if ($this->isAuthenticated()) {
+      $this->redirect($redirectUrl); // Redirect to the specified page if logged in
       exit;
     }
   }

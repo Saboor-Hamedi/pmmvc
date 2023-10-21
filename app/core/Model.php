@@ -2,8 +2,9 @@
 
 namespace App\core;
 
-use App\core\FlashMessage;
 use Exception;
+use PDO;
+use PDOException;
 
 trait Model
 {
@@ -16,11 +17,8 @@ trait Model
     protected $limit = 10;
     protected $offset = 0;
     public $errors = [];
-    // public function __construct()
-    // {
-    //     $this->flash = new FlashMessage;
-    // }
-    public function selectAll()
+
+    public function select()
     {
         try {
             $query = "SELECT * FROM $this->table";
@@ -41,7 +39,7 @@ trait Model
             }
 
             $query .= " LIMIT $this->limit OFFSET $this->offset";
-
+            echo $query;
             $result = $this->query($query, $this->filters);
 
             if ($result) {
@@ -50,36 +48,84 @@ trait Model
                 return false;
             }
         } catch (Exception $e) {
-            // $this->flash->setMessage('Something went wrong' . $e->getMessage() . 'danger');
+            // Handle the exception here
+        }
+    }
+    public function getSelect($options = [])
+    {
+        $query = "SELECT * FROM {$this->table}";
+
+        if (isset($options['where'])) {
+            $query .= " WHERE {$options['where']}";
+        }
+
+        if (isset($options['group'])) {
+            $query .= " GROUP BY {$options['group']}";
+        }
+
+        if (isset($options['order'])) {
+            $query .= " ORDER BY {$options['order']}";
+        }
+
+        if (isset($options['limit'])) {
+            $query .= " LIMIT {$options['limit']}";
+        }
+        $result = $this->query($query);
+
+        if ($result) {
+            return $result;
+        } else {
+            return false;
         }
     }
 
-    public function where($data, $data_not = [])
+
+    public function where($conditions = [], $orderBy = null, $sortOrder = 'ASC', $limit = null, $offset = null)
     {
         try {
-
-            $keys = array_keys($data);
-            $keys_not = array_keys($data_not);
             $query = "SELECT * FROM $this->table WHERE ";
-            foreach ($keys as $key) {
-                $query .= $key . " = :" . $key . " AND  ";
+            // Build the WHERE clause
+            $whereClauses = [];
+            foreach ($conditions as $key => $value) {
+                $whereClauses[] = "$key = :$key";
             }
-            foreach ($keys_not as $key) {
-                $query .= $key . " != :" . $key . " AND  ";
+
+            $query .= implode(' AND ', $whereClauses);
+
+            if ($orderBy !== null) {
+                $query .= " ORDER BY $orderBy $sortOrder";
             }
-            $query = trim($query, " AND ");
-            $query .= " LIMIT $this->limit OFFSET $this->offset ";
-            $data = array_merge($data, $data_not);
-            $result = $this->query($query, $data);
+
+            if ($limit !== null) {
+                $query .= " LIMIT $limit";
+            }
+
+            if ($offset !== null) {
+                $query .= " OFFSET $offset";
+            }
+
+            // Use the 'prepare' method from the 'Database' trait
+            $stmt = $this->prepare($query); // Assuming 'prepare' is available in the trait
+
+            // Execute the query with bound parameters
+            $stmt->execute($conditions);
+
+            // Fetch the results
+            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
             if ($result) {
                 return $result;
             } else {
                 return false;
             }
-        } catch (Exception $e) {
-            // $this->flash->setMessage('Something went wrong' . $e->getMessage() . 'danger');
+        } catch (PDOException $e) {
+            // Handle the exception here (e.g., log it)
+            return false;
         }
     }
+
+
+
     public function first($data, $data_not = [])
     {
         try {
@@ -95,8 +141,8 @@ trait Model
             $query = trim($query, " AND ");
             $query .= " LIMIT $this->limit OFFSET $this->offset ";
             $data = array_merge($data, $data_not);
-
             $result = $this->query($query, $data);
+            // Execute the query with bound parameters
             if ($result) {
                 return $result[0];
             } else {
@@ -157,7 +203,7 @@ trait Model
             $query .= " WHERE $column = :$column ";
             $data[$column] = $id;
             if ($query) {
-                $this->query($query, $data);
+                return $this->query($query, $data);
             } else {
                 return false;
             }
@@ -171,17 +217,14 @@ trait Model
     {
         $data[$column] = $id;
         $query = "DELETE FROM $this->table WHERE $column = :$column";
-        if ($query) {
+    
+        try {
             $this->query($query, $data);
-        } else {
-            return false;
+            return true; // Successful deletion
+        } catch (Exception $e) {
+            // Handle the exception (e.g., log the error or return false)
+            return false; // Deletion failed
         }
     }
-
-    public function show($data)
-    {
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
-    }
+    
 }

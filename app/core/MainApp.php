@@ -2,6 +2,8 @@
 
 namespace App\core;
 
+use Exception;
+
 class MainApp
 {
     public const CONTROLLER_NAME = 'controller';
@@ -65,16 +67,20 @@ class MainApp
         $this->loadController();
         $controller = new $this->controller;
 
-        if (!empty($this->load_controller_url[1])) {
-            $method = $this->load_controller_url[1];
-            if (method_exists($controller, $method)) {
-                $this->method = $method;
-                unset($this->load_controller_url[1]);
-            } else {
-                $this->method = 'index';
+        try {
+            if (!empty($this->load_controller_url[1])) {
+                $method = $this->load_controller_url[1];
+                if (method_exists($controller, $method)) {
+                    $this->method = $method;
+                    unset($this->load_controller_url[1]);
+                } else {
+                    $this->method = 'index';
+                }
             }
+            call_user_func_array([$controller, $this->method], $this->load_controller_url);
+        } catch (Exception $e) {
+            echo 'something wrong on function ' . $this->method;
         }
-        call_user_func_array([$controller, $this->method], $this->load_controller_url);
         ob_end_flush();
     }
 }

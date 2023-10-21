@@ -6,5 +6,7 @@ define('DB_PASSWORD', 'saboor123');
 define('DB_HOST', 'db');
 define('APP_NAME', 'MVC');
 define('APPROOT', dirname(dirname(__FILE__)));
+// config.php
+define('user_id', isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null);
 
 define('DEBUG', true);
