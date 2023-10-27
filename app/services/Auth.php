@@ -8,10 +8,7 @@ class Auth
 {
   use Direction;
 
-  public function __construct()
-  {
-    // session_start(); // Always start the session in the constructor
-  }
+ 
 
   public function login($user_id)
   {
@@ -27,7 +24,7 @@ class Auth
   {
     return $this->isAuthenticated() ? $_SESSION['user_id'] : null;
   }
-
+ 
   public function hasRole($allowedRoles)
   {
     $user = $this->user();

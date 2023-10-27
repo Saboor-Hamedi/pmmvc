@@ -8,7 +8,7 @@ use PDOException;
 
 trait Model
 {
-    use Database, VarDump;
+    use Database, Dump;
 
     private $flash;
     public $filters = [];
@@ -39,7 +39,6 @@ trait Model
             }
 
             $query .= " LIMIT $this->limit OFFSET $this->offset";
-            echo $query;
             $result = $this->query($query, $this->filters);
 
             if ($result) {
@@ -78,7 +77,6 @@ trait Model
             return false;
         }
     }
-
 
     public function where($conditions = [], $orderBy = null, $sortOrder = 'ASC', $limit = null, $offset = null)
     {
@@ -132,6 +130,7 @@ trait Model
             $keys = array_keys($data);
             $keys_not = array_keys($data_not);
             $query = "SELECT * FROM $this->table WHERE ";
+
             foreach ($keys as $key) {
                 $query .= $key . " = :" . $key . " AND  ";
             }
@@ -158,9 +157,9 @@ trait Model
         try {
             //  todo check the data if it exists on UserModel, or any other table
             //  todo also, remove unwanted column
-            if (!empty($this->allowColumns)) {
+            if (!empty($this->fillable)) {
                 foreach ($data as $key => $value) {
-                    if (!in_array($key, $this->allowColumns)) {
+                    if (!in_array($key, $this->fillable)) {
                         unset($data[$key]);
                     }
                 }
@@ -186,9 +185,9 @@ trait Model
         try {
             // todo check the data if it exists on UserModel, or any other table
             // todo also, remove unwanted column
-            if (!empty($this->allowColumns)) {
+            if (!empty($this->fillable)) {
                 foreach ($data as $key => $value) {
-                    if (!in_array($key, $this->allowColumns)) {
+                    if (!in_array($key, $this->fillable)) {
                         unset($data[$key]);
                     }
                 }

@@ -14,7 +14,6 @@ $errors = $data['errors'] ?? [0];
         Update Post
     </h4>
     <?php if (!empty($post) and is_object($post)) : ?>
-       
        <form action="/Home/update/<?php echo $post->id; ?>" method="POST">
             <div class="form-group">
                 <input type="hidden" name="id" class="form-control" id="id" value="<?php echo $post->id; ?>" placeholder="Post id">
@@ -40,10 +39,9 @@ $errors = $data['errors'] ?? [0];
                 </span>
             </div>
             <div class="button-container p-2">
-                <button type="submit" class="btn btn-primary multiple-submit">Submit</button>
+                <button type="submit" class="btn btn-primary btn-sm multiple-submit">Submit</button>
             </div>
         </form>
-       
     <?php endif; ?>
     </div>
 </main>

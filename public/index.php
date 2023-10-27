@@ -11,6 +11,8 @@ use App\core\MainApp;
 $load = new MainApp();
 $load->display();
 
+
+
 ?>
 <script>
   if (window.history.replaceState) {

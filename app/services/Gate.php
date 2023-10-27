@@ -9,8 +9,11 @@ class Gate{
   }
   public function allows($post){
     if(!$this->auth->isAuthenticated()){
-      return false;
-    }
-    return $post->user_id === $this->auth->user()->id;
-  }
+        return false;
+        // $this->auth->isAuthenticated() && $this->auth->user()->id === $post->user_id;
+      }
+      return $this->auth->user()->id === $post->user_id;
+    // return $post === null ? false : $post->user_id === $this->auth->user()->id;
+}
+
 }

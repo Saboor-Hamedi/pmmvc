@@ -1,10 +1,12 @@
-.container {
-	padding: 0.5rem;
-}
+
 .blog-post {
-	display: inline;
-	padding: 5px;
-	margin-bottom: 50px;
+	background-color:white;
+	border-radius: 10px;
+}
+.blog-card{
+	padding: 10px;
+	/* border: 1px solid red; */
+	margin: 10px;
 }
 .blog-post-title {
 	text-align: left;
@@ -12,8 +14,9 @@
 	padding: 5px;
 }
 .button-container {
-  
-	padding-left: 10px;
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
 	border-radius: 10px;
   width: 100%;
 	background-color: whitesmoke;
@@ -23,9 +26,7 @@
 		width: 80%;
 		padding: 0.5rem !important;
 	}
-	.blog-post {
-		padding: 10px 5px 5px 5px;
-	}
+	
 	.blog-post-title {
 		font-size: 1rem;
 	}
@@ -33,7 +34,6 @@
     display: flex !important;
     flex-wrap: wrap;
     align-content: flex-end;
-    justify-content: center;
   	}
    
 }

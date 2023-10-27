@@ -1,16 +1,16 @@
 <?php
-
+// namespace App\controllers;
 use App\core\Direction;
 use App\core\Controller;
 use App\core\HtmlUtils;
 use App\core\FlashMessage;
-use App\core\VarDump;
+use App\core\Dump;
 use App\models\LoginModel;
 use App\services\Auth;
 
 class Login extends Controller
 {
-    use Direction, VarDump;
+    use Direction, Dump;
     public function index()
     {
         // Initialize data array

@@ -58,4 +58,5 @@ class LoginModel
 		$this->fillable = $fillable;
 		return $this;
 	}
+  
 }

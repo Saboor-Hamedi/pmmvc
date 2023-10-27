@@ -3,19 +3,20 @@
 use App\core\Direction;
 use App\core\HtmlUtils;
 use App\core\Controller;
+use App\core\Dump;
 use App\core\FlashMessage;
 use App\models\SignupModel;
 
 class Sigup extends Controller
 {
-    use Direction;
+    use Direction, Dump;
     public function index()
     {
         // Initialize data array
         $data = [];
-        $users = new SignupModel;
         $flash = new FlashMessage;
-
+        $users = new SignupModel;
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Validate user input
             $validationErrors = $users->validate($_POST);

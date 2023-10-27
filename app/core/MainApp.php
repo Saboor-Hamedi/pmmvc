@@ -6,8 +6,7 @@ use Exception;
 
 class MainApp
 {
-    public const CONTROLLER_NAME = 'controller';
-    public const METHOD_NAME = 'method';
+  
     private $load_controller_url;
     private $controller;
     private $method;
@@ -34,8 +33,8 @@ class MainApp
             $this->controller = ucfirst($sanitized_controller);
             unset($this->load_controller_url[0]);
         } else {
-            require '../app/controllers/CustomError.php'; // Change to your error class
-            $this->controller = '\App\controllers\CustomError';
+            require '../app/controllers/Error.php'; // Change to your error class
+            $this->controller = '\App\controllers\Error';
         }
     }
 

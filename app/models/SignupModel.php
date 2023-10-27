@@ -13,7 +13,7 @@ class SignupModel
     protected $email;
     protected $password;
     protected $roles;
-    protected $allowColumns = [
+    protected $fillabel = [
         'username',
         'email',
         'created_at',
