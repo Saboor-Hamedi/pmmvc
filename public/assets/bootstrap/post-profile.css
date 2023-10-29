@@ -1,0 +1,26 @@
+.outter-profile {
+  margin-top: 10px;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.inner-profil {
+  margin: 5px;
+  width: 12%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  clip-path: circle();
+  
+}
+.profile img {
+	max-width: 100%; /* Make the image responsive */
+	border-radius: 50%;
+  clip-path: circle();
+}
+.profile-name a{
+  text-decoration: none;
+  color: black;
+}

@@ -33,7 +33,7 @@ class MainApp
             $this->controller = ucfirst($sanitized_controller);
             unset($this->load_controller_url[0]);
         } else {
-            require '../app/controllers/Error.php'; // Change to your error class
+            //require '../controllers/Error.php'; // Change to your error class
             $this->controller = '\App\controllers\Error';
         }
     }

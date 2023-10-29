@@ -20,11 +20,15 @@ if ($auth->isAuthenticated()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo APP_NAME ?? 'Free Website'; ?></title>
+
     <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/login.css'); ?>">
     <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/cover.css'); ?>">
     <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/blog.css'); ?>">
-    <link rel="stylesheet" href="<?php Assets::assets('assets/css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/footer.css'); ?>">
+    <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/post-profile.css'); ?>">
+    <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/style.css'); ?>">
+    <link rel="stylesheet" href="<?php Assets::assets('assets/awesome-font/css/all.css');?>">
 </head>
 
 <body>

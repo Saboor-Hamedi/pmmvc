@@ -2,31 +2,35 @@
 
 use App\core\Assets;
 ?>
-<footer class="bg-dark text-light py-4 " style="margin-top: 10px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h4>Connect with Us</h4>
-                <ul class="list-unstyled">
-                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h4>Quick Links</h4>
-                <ul class="list-unstyled">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h4>Contact Us</h4>
-                <p>Email: contact@example.com</p>
-                <p>Phone: +1 (123) 456-7890</p>
-            </div>
+<style>
+
+
+</style>
+<footer>
+    <div class="top-footer">
+        <div class="footer-log"><i class="fa-solid fa-bolt"><span class="flash">Flash</span></i> </div>
+        <div class="footer-media">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </div>
+    <div class="footer-container">
+        <div class="social-media">
+            <div class="facebook"><a href="#">Facebook</a></div>
+            <div class="twitter"><a href="#">Twitter</a></div>
+            <div class="instagram"><a href="#">Instagram</a></div>
+        </div>
+        <div class="services">
+            <div><a href="@">Contact</a></div>
+            <div><a href="@">Our Services</a></div>
+            <div><a href="@">Mode Details</a></div>
+        </div>
+        <div class="services">
+            <div><a href="@">Contact</a></div>
+            <div><a href="@">Our Services</a></div>
+            <div><a href="@">Mode Details</a></div>
         </div>
     </div>
 </footer>
@@ -38,19 +42,18 @@ use App\core\Assets;
 <script src="<?php Assets::assets('assets/js/popper.min.js'); ?>"></script>
 <script src="<?php Assets::assets('assets/js/bootstrap.min.js'); ?>"></script>
 <script src="<?php Assets::assets('assets/js/color-modes.js'); ?>"></script>
-
 <!-- prevent multiple submit button -->
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         const submitButtons = document.querySelectorAll('.multiple-submit');
         let isButtonClicked = false;
         submitButtons.forEach(submitButton => {
-            submitButton.addEventListener('click', function (event) {
+            submitButton.addEventListener('click', function(event) {
                 if (!isButtonClicked) {
                     // Set the flag to true to prevent further clicks
                     isButtonClicked = true;
                     // Optionally, if you want to re-enable the button after a delay:
-                    setTimeout(function () {
+                    setTimeout(function() {
                         isButtonClicked = false;
                     }, 1000); // Enable the button after 1 second
                 } else {
@@ -60,11 +63,10 @@ use App\core\Assets;
             });
         });
     });
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
 </script>
-
-
-
-
 </body>
 
 </html>

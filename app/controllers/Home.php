@@ -9,6 +9,7 @@ use App\models\LoginModel;
 use App\seed\PostSeed;
 use App\services\Auth;
 use App\services\Gate;
+use App\services\PostService;
 
 /**
  * Summary of Home
@@ -44,31 +45,32 @@ class Home extends Controller
   {
     $posts = $this->post->getSelect();
 
-    foreach ($posts as $post) {
-      // Load the user associated with the current post
-      $user = $this->user->first(['id' => $post->user_id]);
-      // Create an object for each post and add user data as a property
-      $post->user = $user;
+    if (is_array($posts) || is_object($posts)) {
+      foreach ($posts as $post) {
+        // Load the user associated with the current post
+        $user = $this->user->first(['id' => $post->user_id]);
+        // Create an object for each post and add user data as a property
+        $post->user = $user;
+      }
     }
-
-    $this->view('home', ['posts' => $posts]);
+    $this->view('post/index', ['posts' => $posts]);
   }
 
 
   public function show($id = null)
   {
     if ($this->auth->isAuthenticated()) {
-      $post = $this->post->first(['id' => $id]);
-      $this->view('show', ['post' => $post]);
+      $postService = new PostService($this->post, $this->user);
+      $post = $postService->getSinglePost($id);
+      $this->view('post/show', ['post' => $post]);
     }
   }
 
   public function edit($id = null)
   {
-    // Find the post by its original ID
     if ($this->auth->isAuthenticated()) {
       $post = $this->post->first(['id' => $id]);
-      $this->view('update_post', ['post' => $post]);
+      $this->view('post/edit', ['post' => $post]);
     }
   }
 
@@ -87,9 +89,9 @@ class Home extends Controller
         // check if user is logged in 
         if ($this->auth->isAuthenticated()) {
           $this->post->update_data($id, $_POST);
-          $this->flash->setMessage('Post updated successfully');
+          $this->flash->setMessage('Post updated successfully', 'primary');
           $this->redirect('/Home');
-          $this->view('update_post', ['post' => $post, 'errors' => $this->errors]);
+          $this->view('post/edit', ['post' => $post, 'errors' => $this->errors]);
         }
       }
     }
@@ -108,7 +110,7 @@ class Home extends Controller
           $this->redirect('/Home');
         } else {
           // The post with the given ID does not exist
-          $this->flash->setMessage('Post not found.');
+          $this->flash->setMessage('Post not found.',  'danger');
           $this->redirect('/Home');
         }
       } else {

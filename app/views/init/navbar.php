@@ -16,7 +16,7 @@
     </ul>
     <div class="nav-item">
       <form action="/Logout" method="post" class="m-0 p-0">
-        <button type="submit" name="logout" class="logout-btn">Logout</button>
+        <button type="submit" name="logout" class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
       </form>
     </div>
 

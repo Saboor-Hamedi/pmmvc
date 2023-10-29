@@ -1,14 +1,9 @@
 <?php
-
 namespace App\core;
-
-
-use PDO;
+require_once 'config.php';
 use App\core\FlashMessage;
 use PDOException;
-
-require_once 'Config.php';
-
+use PDO;
 trait Database
 {
     public static $instance;

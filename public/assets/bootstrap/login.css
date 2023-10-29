@@ -1,21 +1,15 @@
-body {
-	background-color: rgba(40, 40, 40, 0.879);
-}
+
 /* Style the form container */
 .login-container {
-	margin: auto;
-	margin-top: 10px;
-	width: 30%;
+	margin: 0 auto;
 	background-color: rgb(255, 255, 255);
 	border-radius: 10px;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 50%;
 }
-.center-container {
-	margin: auto;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	width: 80%;
-	max-width: 100%;
-}
+
 /* Media query for screens smaller than 768px (adjust as needed) */
 @media only screen and (max-width: 768px) {
 	.login-container {

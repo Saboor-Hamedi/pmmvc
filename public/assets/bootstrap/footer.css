@@ -1,0 +1,90 @@
+footer{
+  background-color: rgba(34, 34, 34, 0.84);
+}
+.footer-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding: 20px;
+  margin: 0 auto;
+  justify-content: center;
+  
+}
+.social-media{
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+}
+.social-media a{
+  color: white;
+}
+/* services */
+.services{
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+}
+.services a{
+  color: white;
+}
+
+.top-footer{
+  border-bottom: 0.5px solid white;;
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+}
+.footer-log{
+  color:white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-log, .flash{
+  margin-left: 5px;
+}
+.footer-media{
+  display: grid;
+  grid-template-columns: repeat(4, 4fr);
+  align-items: center;
+  text-align: center;
+}
+.footer-media a{
+  padding: 10px;
+  color:white;
+}
+.footer-media a:nth-child(1){
+  background-color: #4064ac;
+}
+
+.footer-media a:nth-child(1):hover{
+  transition: 0.5s;
+  background-color: #476ebe;
+}
+/* TWITTER */
+.footer-media a:nth-child(2){
+  background-color: #000000;
+}
+
+.footer-media a:nth-child(2):hover{
+  transition: 0.5s;
+  background-color: #271c1cac;
+}
+/* INSTAGRAM */
+.footer-media a:nth-child(3){
+  background-color: #E60D22;
+}
+
+.footer-media a:nth-child(3):hover{
+  transition: 0.5s;
+  background-color: #e60d23b6;
+}
+/* youtube */
+.footer-media a:nth-child(4){
+  background-color: #F70000;
+}
+
+.footer-media a:nth-child(4):hover{
+  transition: 0.5s;
+  background-color: #f70000b9;
+}
