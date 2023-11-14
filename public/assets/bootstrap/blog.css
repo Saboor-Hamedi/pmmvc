@@ -3,18 +3,33 @@ body {
 	margin: 0;
 	padding: 0;
 }
-.message-inform{
+
+.toolbar__wrapper {
+	background-color: white;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	margin: 10px;
+}
+.create-post {
+	padding: 5px;
+}
+.create-post textarea {
+	width: 100%;
+}
+
+.blog-container {
+	width: 60%;
+	margin: 0 auto;
+	border-radius: 10px;
+	margin-top: 4rem;
+	margin-bottom: 10px;
+}
+.message-inform {
 	background-color: white;
 	border-radius: 10px;
 	margin: 10px;
 }
-.blog-container {
-	width: 60%;
-	margin: 0 auto;
-	padding: 10px;
-	margin-top: 10px;
-	border-radius: 10px;
-}
+
 .form-container {
 	background-color: white;
 	border-radius: 10px;
@@ -25,28 +40,32 @@ body {
 }
 .blog-post {
 	background-color: white;
-	border-radius: 10px;
-	/* display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center; */
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 	margin: 10px;
 }
 .blog-card {
 	padding: 10px;
-	margin: 10px;
 }
 .blog-post-title {
-	font-size: 2rem;
+	font-size: 1.5rem;
 }
 .button-container {
 	display: flex;
 	justify-content: space-between;
 	padding: 5px;
-	border-radius: 10px;
 	width: 100%;
 	background-color: whitesmoke;
 }
+.post-time:hover {
+	text-decoration: underline;
+	transition: 0.5s;
+}
+.hashtag {
+	color: blue; /* Set the color or any other styling you desire */
+	font-weight: bold;
+}
+
 @media screen and (max-width: 768px) {
 	body {
 		font-size: 14px;
@@ -59,6 +78,19 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
+	.blog-container {
+		width: 100%;
+	}
+	.toolbar__wrapper {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		margin: 0;
+	}
+	.blog-post {
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+	}
+
 	.container {
 		width: 80%;
 		padding: 0.5rem !important;
@@ -76,4 +108,6 @@ body {
 	.blog-post-title {
 		font-size: 1rem;
 	}
+}
+@media screen and (max-width: 500px) {
 }

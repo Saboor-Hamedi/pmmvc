@@ -21,6 +21,7 @@ class PostSeed
       "user_id" => $auth->user()->id,
       "title" => $faker->sentence,
       "content" => $faker->paragraph,
+      "published" => 1,
     ];
     $count = 2; // Specify the number of times you want to insert the data
 

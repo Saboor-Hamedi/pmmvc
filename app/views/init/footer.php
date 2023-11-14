@@ -6,7 +6,7 @@ use App\core\Assets;
 
 
 </style>
-<footer>
+<footer class="footer">
     <div class="top-footer">
         <div class="footer-log"><i class="fa-solid fa-bolt"><span class="flash">Flash</span></i> </div>
         <div class="footer-media">
@@ -36,12 +36,6 @@ use App\core\Assets;
 </footer>
 
 
-
-<script src="<?php Assets::assets('assets/js/jquery-3.5.1.slim.min.js'); ?>"></script>
-<script src="<?php Assets::assets('assets/js/bootstrap.bundle.min.js'); ?>"></script>
-<script src="<?php Assets::assets('assets/js/popper.min.js'); ?>"></script>
-<script src="<?php Assets::assets('assets/js/bootstrap.min.js'); ?>"></script>
-<script src="<?php Assets::assets('assets/js/color-modes.js'); ?>"></script>
 <!-- prevent multiple submit button -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -66,7 +60,14 @@ use App\core\Assets;
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
+
 </script>
+
+<script src="<?php Assets::assets('assets/js/jquery-3.7.1.min.js'); ?>"></script>
+<script src="<?php Assets::assets('assets/js/popper.min.js'); ?>"></script>
+<script src="<?php Assets::assets('assets/js/bootstrap.min.js'); ?>"></script>
+<script src="<?php Assets::assets('assets/js/bootstrap.bundle.min.js'); ?>"></script>
+
 </body>
 
 </html>

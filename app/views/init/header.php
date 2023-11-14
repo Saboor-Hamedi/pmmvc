@@ -27,7 +27,10 @@ if ($auth->isAuthenticated()) {
     <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/blog.css'); ?>">
     <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/footer.css'); ?>">
     <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/post-profile.css'); ?>">
+    <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/editor.css'); ?>">
+    <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/tags.css'); ?>">
     <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/style.css'); ?>">
+    <link rel="stylesheet" href="<?php Assets::assets('assets/bootstrap/front.css'); ?>">
     <link rel="stylesheet" href="<?php Assets::assets('assets/awesome-font/css/all.css');?>">
 </head>
 

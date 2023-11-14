@@ -8,7 +8,6 @@ footer{
   padding: 20px;
   margin: 0 auto;
   justify-content: center;
-  
 }
 .social-media{
   border-radius: 10px;
@@ -87,4 +86,15 @@ footer{
 .footer-media a:nth-child(4):hover{
   transition: 0.5s;
   background-color: #f70000b9;
+}
+
+@media screen and (max-width: 786px){
+  .footer-container{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 500px){
+  .footer-container{
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

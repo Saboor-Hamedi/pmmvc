@@ -4,6 +4,7 @@ use App\core\Controller;
 use App\core\Direction;
 use App\core\FlashMessage;
 use App\core\Dump;
+use App\core\HtmlUtils;
 use App\models\PostModel;
 use App\models\LoginModel;
 use App\seed\PostSeed;
@@ -43,7 +44,11 @@ class Home extends Controller
   }
   public function index()
   {
-    $posts = $this->post->getSelect();
+
+    $posts = $this->post->getSelect([
+      'group' => 'title',
+      'order' => 'created_at desc'
+    ]);
 
     if (is_array($posts) || is_object($posts)) {
       foreach ($posts as $post) {
@@ -96,6 +101,46 @@ class Home extends Controller
       }
     }
   }
+  public function create()
+  {
+    $posts = null;
+    // insert
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $validation = $this->post->validate($_POST);
+      if ($validation) {
+        $this->data['errors'] = $validation;
+        $this->errors = $this->data['errors'];
+        $posts = $this->post->getSelect([
+          'group' => 'title',
+          'order' => 'created_at desc'
+        ]);
+        if (is_array($posts) || is_object($posts)) {
+          foreach ($posts as $post) {
+            // Load the user associated with the current post
+            $user = $this->user->first(['id' => $post->user_id]);
+            // Create an object for each post and add user data as a property
+            $post->user = $user;
+          }
+        }
+      } else {
+
+        // 
+        $title = HtmlUtils::escape($_POST['title']);
+        $content = HtmlUtils::escape($_POST['content']);
+        // Prepare user data
+        $userData = [
+          'user_id' => $this->auth->user()->id,
+          'title' => $title,
+          'content' => $content,
+        ];
+        $this->post->insert_data($userData);
+        $this->flash->setMessage('Posted successfully', 'primary');
+        $this->redirect('/Home');
+      }
+    }
+    $this->view('post/index', ['posts' => $posts, 'errors' => $this->errors]);
+  }
+
   public function delete($id = null)
   {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

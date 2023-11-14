@@ -9,14 +9,14 @@ require APPROOT . '/views/init/navbar.php';
 $auth->loggedOut();
 ?>
 
-<main class="login-container">
-  <div class="center-container">
+<main class="main">
+  <div class="login-container">
     <?php
     $flash->displayMessages();
     ?>
 
     <form action="" method="POST">
-      <div class="form-group ">
+      <div class="form-group">
         <input type="text" class="form-control" name="email" id="email" value="<?php HtmlUtils::getInputValue('email'); ?>" placeholder="Email Address">
         <span class="error">
           <?php
@@ -26,7 +26,6 @@ $auth->loggedOut();
           ?>
         </span>
       </div>
-
       <div class="form-group">
         <input type="password" class="form-control" name="password" id="password" placeholder="Password">
         <span class="error">
@@ -36,10 +35,10 @@ $auth->loggedOut();
           }
           ?>
         </span>
-      </div>
 
+      </div>
       <div class="form-floating">
-        <button type="submit" name="login-btn" class="btn btn-primary w-100 py-2" id="login-btn">
+        <button type="submit" name="login-btn" class="btn btn-primary" id="login-btn">
           Login
         </button>
       </div>

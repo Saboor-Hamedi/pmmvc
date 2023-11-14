@@ -19,8 +19,46 @@
 	max-width: 100%; /* Make the image responsive */
 	border-radius: 50%;
   clip-path: circle();
+  cursor: pointer;
 }
 .profile-name a{
   text-decoration: none;
   color: black;
+}
+/* profile on header */
+.image-profile-dropdown{
+  border-radius: 50%;
+  width: 40px; /* Set the desired width */
+  height: 40px; /* Set the desired height */
+  object-fit: cover; /* To maintain the aspect ratio and crop the image if necessary */
+  cursor: pointer;
+}
+.dropdown-menu-right{
+  padding: 0;
+  margin: 0;
+  width: 400px;
+  border-radius: 5px;
+}
+.dropdown-menu-right a{
+  text-decoration: none;
+}
+.dropdown-menu-right li{
+  padding: 0.5rem;
+}
+.dropdown-menu-right li:hover{
+  background-color: whitesmoke;
+  border-radius:5px;
+  cursor: pointer;
+}
+/* logout */
+.logout-btn {
+  width: 100%;
+  text-align: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+}
+.logout-btn{
+	font-size: 0.875rem;
 }

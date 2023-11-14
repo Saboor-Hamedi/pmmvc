@@ -13,12 +13,12 @@ class MainApp
 
     public function __construct()
     {
-        $this->controller = 'Home';
+        $this->controller = 'FrontPage';
         $this->method = 'index';
     }
     public static function splitURL()
     {
-        $home_url = $_GET['url'] ?? 'Home';
+        $home_url = $_GET['url'] ?? 'FrontPage';
         $home_url = explode('/', trim($home_url, '/'));
         return $home_url;
     }

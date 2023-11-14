@@ -9,9 +9,8 @@ require APPROOT . '/views/init/navbar.php';
 $auth->loggedIn([0,1,2]);
 ?>
 
-<main class="login-container">
-    <div class="center-container">
-
+<main class="main">
+  <div class="login-container">
         <form action="" method="POST">
             <div class="form-group ">
                 <input type="text" class="form-control" name="username" id="username" value="<?php HtmlUtils::getInputValue('username'); ?>" placeholder="Username">
@@ -62,7 +61,7 @@ $auth->loggedIn([0,1,2]);
                 </span>
             </div>
             <div class="form-floating">
-                <button type="submit" name="sign-up-btn" class="btn btn-primary w-100 py-2" id="sign-up-btn">
+                <button type="submit" name="sign-up-btn" class="w-100 py-2" id="sign-up-btn">
                     Sign in
                 </button>
             </div>

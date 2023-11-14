@@ -1,5 +1,4 @@
 <?php
-// namespace App\controllers;
 use App\core\Direction;
 use App\core\Controller;
 use App\core\HtmlUtils;

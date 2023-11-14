@@ -50,13 +50,33 @@ trait Model
             // Handle the exception here
         }
     }
+    // public function getSelect($options = [])
+    // {
+    //     $query = "SELECT * FROM {$this->table}";
+
+    //     if (isset($options['where'])) {
+    //         $query .= " WHERE {$options['where']}";
+    //     }
+    //     if (isset($options['group'])) {
+    //         $query .= " GROUP BY {$options['group']}";
+    //     }
+
+    //     if (isset($options['order'])) {
+    //         $query .= " ORDER BY {$options['order']}";
+    //     }
+    //     if (isset($options['limit'])) {
+    //         $query .= " LIMIT {$options['limit']}";
+    //     }
+    //     $result = $this->query($query);
+    //     if ($result) {
+    //         return $result;
+    //     } else {
+    //         return false;
+    //     }
+    // }
     public function getSelect($options = [])
     {
         $query = "SELECT * FROM {$this->table}";
-
-        if (isset($options['where'])) {
-            $query .= " WHERE {$options['where']}";
-        }
 
         if (isset($options['group'])) {
             $query .= " GROUP BY {$options['group']}";
@@ -69,6 +89,11 @@ trait Model
         if (isset($options['limit'])) {
             $query .= " LIMIT {$options['limit']}";
         }
+
+        if (isset($options['where'])) {
+            $query .= " WHERE {$options['where']}";
+        }
+
         $result = $this->query($query);
 
         if ($result) {
@@ -216,7 +241,7 @@ trait Model
     {
         $data[$column] = $id;
         $query = "DELETE FROM $this->table WHERE $column = :$column";
-    
+
         try {
             $this->query($query, $data);
             return true; // Successful deletion
@@ -225,5 +250,4 @@ trait Model
             return false; // Deletion failed
         }
     }
-    
 }
