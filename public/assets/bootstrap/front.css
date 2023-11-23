@@ -21,7 +21,15 @@
   border-top-right-radius: 10px;
   outline: none;
 }
-
+.author-fron-card{
+  color: #d6cfcf;
+  font-size: 10px;
+}
+.font-created_at{
+  color: #d6cfcf;
+  font-size: 10px;
+  font-weight: bolder;
+}
 
 .front-card-title{
   font-size: 15px;

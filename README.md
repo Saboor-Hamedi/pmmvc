@@ -1,18 +1,26 @@
 # PMMVC - Project Management MVC
 
-## Table of Contents
+## 1. Table of Contents
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Architecture](#architecture)
-- [Contributing](#contributing)
-- [License](#license)
+- [PMMVC - Project Management MVC](#pmmvc---project-management-mvc)
+  - [1. Table of Contents](#1-table-of-contents)
+  - [2. Introduction](#2-introduction)
+  - [3. Features](#3-features)
+    - [3.1. Task Management](#31-task-management)
+    - [3.2. Gantt Charts](#32-gantt-charts)
+    - [3.3. Collaboration](#33-collaboration)
+    - [3.4. Customization](#34-customization)
+    - [3.5. Notifications](#35-notifications)
+    - [3.6. Reports and Analytics](#36-reports-and-analytics)
+  - [4. Getting Started](#4-getting-started)
+    - [4.1. Prerequisites](#41-prerequisites)
+    - [4.2. Installation](#42-installation)
+  - [5. Usage](#5-usage)
+  - [6. Architecture](#6-architecture)
+  - [7. Contributing](#7-contributing)
+  - [8. License](#8-license)
 
-## Introduction
+## 2. Introduction
 
 PMMVC (Project Management MVC) is a powerful and flexible open-source project management tool built on the Model-View-Controller (MVC) architectural pattern. It is designed to help individuals and teams efficiently plan, track, and manage their projects from start to finish.
 
@@ -28,35 +36,35 @@ Whether you are a software development team looking for a project management sol
 - **Notifications:** Receive real-time notifications on project updates, ensuring everyone stays in the loop.
 - **Reports and Analytics:** Gain insights into project performance with detailed reports and analytics.
 
-## Features
+## 3. Features
 
-### Task Management
+### 3.1. Task Management
 
 PMMVC allows you to create, assign, and manage tasks with ease. Each task can have a due date, priority level, and detailed description.
 
-### Gantt Charts
+### 3.2. Gantt Charts
 
 Visualize your project's timeline with Gantt charts. Drag and drop tasks to adjust schedules and dependencies, making project planning a breeze.
 
-### Collaboration
+### 3.3. Collaboration
 
 Invite team members to your projects and assign them roles such as Admin, Member, or Viewer. Collaborate seamlessly by commenting on tasks and sharing files.
 
-### Customization
+### 3.4. Customization
 
 Tailor PMMVC to suit your project's unique requirements. Create custom project templates, define task types, and add custom fields to capture specific data.
 
-### Notifications
+### 3.5. Notifications
 
 Stay informed with real-time notifications. Receive updates on task assignments, comments, and project progress, keeping everyone on the same page.
 
-### Reports and Analytics
+### 3.6. Reports and Analytics
 
 Monitor project performance with detailed reports and analytics. Track progress, identify bottlenecks, and make data-driven decisions.
 
-## Getting Started
+## 4. Getting Started
 
-### Prerequisites
+### 4.1. Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
@@ -64,7 +72,7 @@ Before you begin, ensure you have met the following requirements:
 - MongoDB (version 4 or higher)
 - Git
 
-### Installation
+### 4.2. Installation
 
 1. Clone the repository:
 
@@ -94,7 +102,7 @@ Before you begin, ensure you have met the following requirements:
 
 You can now access PMMVC by opening your web browser and navigating to `http://localhost:3000`.
 
-## Usage
+## 5. Usage
 
 Here are some basic steps to get started with PMMVC:
 
@@ -110,7 +118,7 @@ Here are some basic steps to get started with PMMVC:
 
 6. **Reports:** Access project reports and analytics for insights into project performance.
 
-## Architecture
+## 6. Architecture
 
 PMMVC is built on the Model-View-Controller (MVC) architectural pattern:
 
@@ -120,11 +128,11 @@ PMMVC is built on the Model-View-Controller (MVC) architectural pattern:
 
 - **Controller:** Manages user requests, processes data, and updates the model and view accordingly.
 
-## Contributing
+## 7. Contributing
 
 We welcome contributions from the community. If you'd like to contribute to PMMVC, please follow our [Contribution Guidelines](CONTRIBUTING.md).
 
-## License
+## 8. License
 
 PMMVC is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 

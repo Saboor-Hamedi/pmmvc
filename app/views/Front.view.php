@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/init/header.php';
 
+use App\config\TimeFormatter;
 use App\core\Assets;
 use App\services\Str;
 
@@ -34,11 +35,15 @@ use App\services\Str;
       <?php if (is_array($posts) || is_object($posts)) : ?>
         <?php foreach ($posts as $post) : ?>
           <div class="front-card-body">
+            
             <div class="front-card-image">
               <img class="card-img-top" src="<?php Assets::assets('assets/profile/profile.png') ?>" alt="Card image cap">
             </div>
             <div class="front-card">
               <div class="front-inner-content">
+                <div class="author-fron-card"><?php echo $post->user->username; ?></div>
+                <?php $format = new TimeFormatter('M j Y');?>
+                <div class="font-created_at"><?php echo $format->format($post->created_at);?></div>
                 <h5 class="front-card-title"><?php echo $post->title; ?></h5>
                 <p class="card-text"><?php echo Str::limit($post->content, 50, '...') ?></p>
               </div>

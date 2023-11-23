@@ -66,7 +66,7 @@ class Home extends Controller
   {
     if ($this->auth->isAuthenticated()) {
       $postService = new PostService($this->post, $this->user);
-      $post = $postService->getSinglePost($id);
+      $post = $postService->singlePostUser($id);
       $this->view('post/show', ['post' => $post]);
     }
   }

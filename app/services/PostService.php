@@ -11,7 +11,7 @@ class PostService
     $this->postModel = $postModel;
     $this->userModel = $userModel;
   }
-  public function getPostWithUsers()
+  public function postWithUser()
   {
     $posts = $this->postModel->getSelect();
     foreach ($posts as $post) {
@@ -20,7 +20,7 @@ class PostService
     }
     return $posts;
   }
-  public function getSinglePost($id)
+  public function singlePostUser($id)
   {
     $post = $this->postModel->first(['id' => $id]);
 

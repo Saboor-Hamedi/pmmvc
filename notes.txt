@@ -44,3 +44,10 @@ exit
 The auth method sets session variables when a user is authenticated.
 The isAuthenticated method checks if a user is authenticated (logged in).
 The getUser method retrieves user data if the user is authenticated.
+
+foler 
+ config 
+    PostFormatter.php 
+    ! This class is responsibel for hashtags, if you want to make post with hastags
+    #world, #hello, it will highlight it. 
+    
